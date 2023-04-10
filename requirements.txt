@@ -1,0 +1,14 @@
+pydantic
+ultralytics
+fastapi
+uvicorn
+pydantic 
+typing
+requests 
+pathlib
+pandas
+numpy
+zipp
+gunicorn
+Pillow
+python-multipart

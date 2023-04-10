@@ -1,0 +1,16 @@
+fastapi 
+uvicorn[standard]
+pydantic 
+typing 
+pandas 
+gunicorn
+openpyxl   
+scikit-learn
+python-multipart
+fsspec
+s3fs
+pathlib
+heroku3
+zipp
+requests
+ultralytics
