@@ -34,9 +34,7 @@ tags_metadata = [
         "description": "Wildfire Predictor"
     }
 ]
-### 
-# Here you can define some configurations 
-###
+
 
 app = FastAPI(
     title="🔥 Wildfire Project API",
@@ -50,8 +48,7 @@ app = FastAPI(
 )
 
 
-#class Inputs(BaseModel):
-# Here you define enpoints 
+
 @app.get("/", tags="Introduction Endpoint")
 async def index():
     """
@@ -79,10 +76,7 @@ async def image_pred(file: UploadFile = File(...)):
     return FileResponse(f"runs/detect/predict/{file.filename}") 
     
 
-# @app.post("/wildfire_predictor")
-# async def wildfire_predictor(image: Inputs):
 
-###
 
 
 if __name__=="__main__":
