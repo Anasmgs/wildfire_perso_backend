@@ -49,7 +49,7 @@ app = FastAPI(
 
 
 
-@app.get("/", tags="Introduction Endpoint")
+@app.get("/", tags= "Introduction Endpoint")
 async def index():
     """
     Simply returns an intro message
@@ -59,15 +59,15 @@ async def index():
 
     return message
 
-@app.post("/image-pred", tags="Detector Endpoint")
+@app.post("/image-detector", tags= "Detector Endpoint")
 async def image_pred(file: UploadFile = File(...)):
     """
     Make image prediction 
     """ 
-    # Clear previous detected images folder
-    shutil.rmtree('runs/')
-    # Load model.
+    # Clear previously detected images folder
+    shutil.rmtree('runs/detect/')
 
+    # Load model.
     model = YOLO("yolov8_run2.pt")
 
     # Run trained model on uploaded image.
