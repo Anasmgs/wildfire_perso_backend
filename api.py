@@ -34,9 +34,7 @@ tags_metadata = [
         "description": "Wildfire Predictor"
     }
 ]
-### 
-# Here you can define some configurations 
-###
+
 
 app = FastAPI(
     title="🔥 Wildfire Project API",
@@ -50,9 +48,8 @@ app = FastAPI(
 )
 
 
-#class Inputs(BaseModel):
-# Here you define enpoints 
-@app.get("/", tags="Introduction Endpoint")
+
+@app.get("/", tags= "Introduction Endpoint")
 async def index():
     """
     Simply returns an intro message
@@ -62,15 +59,15 @@ async def index():
 
     return message
 
-@app.post("/image-pred", tags="Detector Endpoint")
+@app.post("/image-detector", tags= "Detector Endpoint")
 async def image_pred(file: UploadFile = File(...)):
     """
     Make image prediction 
     """ 
-    # Clear previous detected images folder
-    shutil.rmtree('runs/')
-    # Load model.
+    # Clear previously detected images folder (need to add condition if folder exist)
+    #shutil.rmtree('runs/detect/')
 
+    # Load model
     model = YOLO("yolov8_run2.pt")
 
     # Run trained model on uploaded image.
@@ -79,10 +76,7 @@ async def image_pred(file: UploadFile = File(...)):
     return FileResponse(f"runs/detect/predict/{file.filename}") 
     
 
-# @app.post("/wildfire_predictor")
-# async def wildfire_predictor(image: Inputs):
 
-###
 
 
 if __name__=="__main__":

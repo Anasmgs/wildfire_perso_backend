@@ -10,7 +10,7 @@ RUN apt install curl -y
 RUN curl -fsSL https://get.deta.dev/cli.sh | sh
 
 COPY requirements.txt /dependencies/requirements.txt
-RUN pip install -r /dependencies/requirements.txt
+RUN pip install --no-cache-dir -r /dependencies/requirements.txt
 
 COPY . /home/app
 
