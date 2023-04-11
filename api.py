@@ -74,7 +74,7 @@ async def image_pred(file: UploadFile = File(...)):
     model = YOLO("yolov8_run2.pt")
 
     # Run trained model on uploaded image.
-    res = model(file.file, save=True)
+    res = model(Image.open(file.file), save=True)
 
     return FileResponse(f"runs/detect/predict/{file.filename}") 
     
