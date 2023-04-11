@@ -6,6 +6,7 @@ import cv2
 from PIL import Image
 from ultralytics import YOLO
 import shutil
+import io
 
 
 
@@ -60,7 +61,7 @@ async def index():
     return message
 
 @app.post("/image-detector", tags= ["Detector Endpoint"])
-async def image_pred(file: UploadFile = File(...)):
+async def image_pred(file: bytes = File(...)):
     """
     Make image prediction 
     """ 
@@ -71,7 +72,7 @@ async def image_pred(file: UploadFile = File(...)):
     model = YOLO("yolov8_run2.pt")
 
     # Run trained model on uploaded image.
-    res = model(Image.open(file.file))
+    res = model(Image.open(io.BytesIO(file)), save=True)
 
     return FileResponse(f"runs/detect/predict/{file.filename}") 
     
