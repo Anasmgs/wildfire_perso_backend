@@ -73,7 +73,7 @@ async def image_pred(file: bytes = File(...)):
 
     # Run trained model on uploaded image.
     im = Image.open(io.BytesIO(file))
-    res = model(im.save("im_detected.jpg", format="JPG"), save=True)
+    res = model(im.save("im_detected.jpg", format="JPEG"), save=True)
 
     return FileResponse(f"runs/detect/predict/im_detected.jpg") 
     
