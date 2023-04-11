@@ -64,10 +64,10 @@ async def image_pred(file: UploadFile = File(...)):
     """
     Make image prediction 
     """ 
-    # Clear previously detected images folder
-    shutil.rmtree('runs/detect/')
+    # Clear previously detected images folder (need to add condition if folder exist)
+    #shutil.rmtree('runs/detect/')
 
-    # Load model.
+    # Load model
     model = YOLO("yolov8_run2.pt")
 
     # Run trained model on uploaded image.
