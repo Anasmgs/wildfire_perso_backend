@@ -49,7 +49,7 @@ app = FastAPI(
 
 
 
-@app.get("/", tags= "Introduction Endpoint")
+@app.get("/", tags= ["Introduction Endpoint"])
 async def index():
     """
     Simply returns an intro message
@@ -59,7 +59,7 @@ async def index():
 
     return message
 
-@app.post("/image-detector", tags= "Detector Endpoint")
+@app.post("/image-detector", tags= ["Detector Endpoint"])
 async def image_pred(file: UploadFile = File(...)):
     """
     Make image prediction 
