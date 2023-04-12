@@ -7,6 +7,7 @@ from PIL import Image
 from ultralytics import YOLO
 import shutil
 import io
+import json
 
 
 
@@ -72,11 +73,10 @@ async def image_pred(file: bytes = File(...)):
     model = YOLO("yolov8_run2.pt")
 
     # Run trained model on uploaded image.
-    im = Image.open(io.BytesIO(file))
-    res = model(im.save("im_detected.jpg", format="JPEG"))
+    im = Image.open(io.BytesIO(file), formats=None)
+    res = model(im)
     res_plotted = res[0].plot()
-    cv2.imwrite('im_detected.jpg',res_plotted)
-    return FileResponse("im_detected.jpg") 
+    return json.dumps(res_plotted.tolist())
     
 
 
